@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ED4009"
+    tools:context=".City">
+
+    <Button
+        android:id="@+id/city_logoutbtn"
+        android:layout_width="416dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="126dp"
+        android:text="Logout"
+        app:backgroundTint="#0B0A0A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/city_homebtn" />
+
+    <Button
+        android:id="@+id/city_homebtn"
+        android:layout_width="414dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Home"
+        app:backgroundTint="#191818"
+        app:layout_constraintBottom_toTopOf="@+id/city_logoutbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/favorites_citybtn" />
+
+    <Button
+        android:id="@+id/city_search_btn"
+        android:layout_width="116dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="169dp"
+        android:layout_marginLeft="169dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="172dp"
+        android:layout_marginRight="172dp"
+        android:layout_marginBottom="8dp"
+        android:background="#151414"
+        android:text="Search"
+        android:textColor="#F6F4F4"
+        app:backgroundTint="#0B0B0B"
+        app:layout_constraintBottom_toTopOf="@+id/gps_search_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_input" />
+
+    <Button
+        android:id="@+id/gps_search_btn"
+        android:layout_width="57dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="8dp"
+        android:background="#121111"
+        android:textColor="#F6F5F5"
+        app:backgroundTint="#101010"
+        app:icon="@drawable/ic_action_gps"
+        app:layout_constraintBottom_toTopOf="@+id/favorites_citybtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/city_search_btn" />
+
+    <Button
+        android:id="@+id/favorites_citybtn"
+        android:layout_width="417dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#0E0E0E"
+        android:text="Favorites"
+        app:backgroundTint="#0C0C0C"
+        app:layout_constraintBottom_toTopOf="@+id/city_homebtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gps_search_btn" />
+
+    <EditText
+        android:id="@+id/user_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="103dp"
+        android:layout_marginLeft="103dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginRight="98dp"
+        android:layout_marginBottom="8dp"
+        android:background="#090909"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter City or Zip "
+        android:textColor="#FAFAFA"
+        app:layout_constraintBottom_toTopOf="@+id/city_search_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

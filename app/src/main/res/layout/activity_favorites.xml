@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ED4009"
+    tools:context=".Favorites">
+
+    <Button
+        android:id="@+id/city_logoutbtn"
+        android:layout_width="121dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="74dp"
+        android:text="Logout"
+        app:backgroundTint="#0B0A0A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/favorites_citybtn"
+        app:layout_constraintTop_toBottomOf="@+id/gps_search_btn" />
+
+    <Button
+        android:id="@+id/city_homebtn"
+        android:layout_width="116dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="74dp"
+        android:text="Home"
+        app:backgroundTint="#191818"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/favorites_citybtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gps_search_btn" />
+
+    <Button
+        android:id="@+id/gps_search_btn"
+        android:layout_width="243dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="#121111"
+        android:text="Remove From Favorites"
+        android:textColor="#F6F5F5"
+        app:backgroundTint="#101010"
+        app:layout_constraintBottom_toTopOf="@+id/city_logoutbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gps_search_btn2" />
+
+    <Button
+        android:id="@+id/gps_search_btn2"
+        android:layout_width="243dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="390dp"
+        android:layout_marginBottom="20dp"
+        android:background="#121111"
+        android:text="Add to Favorites"
+        android:textColor="#F6F5F5"
+        app:backgroundTint="#101010"
+        app:layout_constraintBottom_toTopOf="@+id/gps_search_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/favorites_citybtn"
+        android:layout_width="123dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="74dp"
+        android:background="#0E0E0E"
+        android:text="City"
+        app:backgroundTint="#0C0C0C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/city_logoutbtn"
+        app:layout_constraintStart_toEndOf="@+id/city_homebtn"
+        app:layout_constraintTop_toBottomOf="@+id/gps_search_btn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
