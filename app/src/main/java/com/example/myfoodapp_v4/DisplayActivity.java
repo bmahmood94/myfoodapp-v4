@@ -20,7 +20,8 @@ public class DisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
         Name= findViewById(R.id.food_name);
-
+        Name.setText(d.getName());
+/*
         if(d.getName()!=null) {
             for (int i = 0; i < 10; i++) {
                 rName[i] = d.getName();
@@ -33,6 +34,6 @@ public class DisplayActivity extends AppCompatActivity {
             }
         }else{
              Name.setText("error");
-            }
+            }*/
         }
     }
