@@ -34,6 +34,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,13 +46,13 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
     StringRequest stringRequest;
     RequestQueue requestQueue;
     //declaration of object of RestaurantInfo class to transfer data over to store
-    public static RestaurantInfo data = new RestaurantInfo();
+    public static ArrayList<RestaurantInfo> data = new ArrayList<RestaurantInfo>();
     private Context context;
 
-//yelp api_key
+    //yelp api_key
     public static final String ACCESS_TOKEN = "beKwCiGsiXFNcSneUc_Wz5WF2R-6q4GYVxWQzfMHWwtulKm4KojGk6I0OEtVMvVWxC6qmhkbJ_b87i8-R82e8kIt-qLyJk2wx_pIyoKGy1QFrv5xj-Mll5DZevvIX3Yx";
     public static final String TAG = "My Tag";
-//declaration of buttons and textviews and edit texts that connect to layout pages
+    //declaration of buttons and textviews and edit texts that connect to layout pages
     private Button gps, favorites, home, logout;
     private Button search;
     private EditText user_input;
@@ -124,7 +125,7 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
         });
 
     }
-    public static RestaurantInfo getInfo()
+    public static ArrayList<RestaurantInfo> getInfo()
     {
         return data;
     }
@@ -139,36 +140,42 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
             //if call successful return the string response
             public void onResponse(String response) {
                 System.out.println(response);
+                RestaurantInfo info;
 
                 try {
                     JSONObject main = new JSONObject(response);
                     JSONArray businesses = main.getJSONArray("businesses");
-                    int i = 0;
-                    do {
-                        Intent intent = new Intent(context, DisplayActivity.class);
-                        startActivity(intent);
-                    }
-                    while(businesses.length()!=0);
-                    JSONObject object = businesses.getJSONObject(i);
-                    JSONObject object2 = businesses.getJSONObject(i).getJSONObject("location");
-                    String name = object.getString("name");
-                    System.out.println(name);
-                    String phone = object.getString("display_phone");
-                    System.out.println(phone);
-                    String rating = object.getString("rating");
-                    System.out.println(rating);
-                    String distance = object.getString("distance");
-                    System.out.println(distance);
-                    String location = object2.getString("address1");
-                    System.out.println(location);
-                    //String open_closed = object.getString("is_closed");
 
-                    City.data.setRating(object.getString("rating"));
-                    City.data.setName(object.getString("name"));
-                    City.data.setPhone(object.getString("phone"));
-                    City.data.setDistance(object.getString("distance"));
-                    City.data.setAddress(object.getString("location"));
-                    i++;
+                    //Loop through the businesses in the JSON Array
+                    for(int i =0; i<businesses.length(); i++){
+                        JSONObject object = businesses.getJSONObject(i);
+                        JSONObject object2 = businesses.getJSONObject(i).getJSONObject("location");
+                        String name = object.getString("name");
+                        System.out.println(name);
+                        String phone = object.getString("display_phone");
+                        System.out.println(phone);
+                        String rating = object.getString("rating");
+                        System.out.println(rating);
+                        String distance = object.getString("distance");
+                        System.out.println(distance);
+                        String location = object2.getString("address1");
+                        System.out.println(location);
+                        //String open_closed = object.getString("is_closed");
+
+                        //Once we have the data, we will make a new RestaurantInfo
+                        info = new RestaurantInfo();
+                        info.setRating(object.getString("rating"));
+                        info.setName(object.getString("name"));
+                        info.setPhone(object.getString("phone"));
+                        info.setDistance(object.getString("distance"));
+                        info.setAddress(object.getString("location"));
+
+                        //Then add it to the array List
+                        data.add(info);
+
+                    }
+                    Intent intent = new Intent(context, DisplayActivity.class);
+                    startActivity(intent);
 
 
                 } catch (JSONException e) {
@@ -234,7 +241,7 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
             @Override
             public void onResponse(String response) {
                 System.out.println(response);
-
+                RestaurantInfo info;
 
                 try {
                     JSONObject main = new JSONObject(response);
@@ -258,11 +265,18 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
                             System.out.println(location);
                             //String open_closed = object.getString("is_closed");
 
-                            City.data.setRating(object.getString("rating"));
-                            City.data.setName(object.getString("name"));
-                            City.data.setPhone(object.getString("phone"));
-                            City.data.setDistance(object.getString("distance"));
-                            City.data.setAddress(object.getString("location"));
+                            //Once we have the data, we will make a new RestaurantInfo
+                            info = new RestaurantInfo();
+                            info.setRating(object.getString("rating"));
+                            info.setName(object.getString("name"));
+                            info.setPhone(object.getString("phone"));
+                            info.setDistance(object.getString("distance"));
+                            info.setAddress(object.getString("location"));
+
+                            //Then add it to the array List
+                            data.add(info);
+
+
 
                         }
                         System.out.println(context);
@@ -299,5 +313,4 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
     }
 
 }
-
 

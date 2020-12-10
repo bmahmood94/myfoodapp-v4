@@ -5,14 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class DisplayActivity extends AppCompatActivity {
-    public static RestaurantInfo d = new RestaurantInfo();
+    public ArrayList<RestaurantInfo> data;
     public TextView Name;
-    public String [] rName;
-    public String [] rPhone;
-    public String [] rRating;
-    public String [] rAddress;
-    public String [] rDistance;
+    public String[] rName= new String[10];
+    public String[] rPhone= new String[10];;
+    public String[] rRating= new String[10];;
+    public String[] rAddress= new String[10];;
+    public String[] rDistance= new String[10];;
 
 
     @Override
@@ -20,20 +22,36 @@ public class DisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
         Name= findViewById(R.id.food_name);
-        Name.setText(d.getName());
-/*
-        if(d.getName()!=null) {
-            for (int i = 0; i < 10; i++) {
+
+        data = City.getInfo();
+        RestaurantInfo d;
+
+        for(RestaurantInfo i : data){
+            System.out.println(i);
+
+        }
+
+        if(data.size() >= 10) {
+            for (int i = 0; i < 5; i++) {
+                //Set d to the current data index in the array list
+                d = data.get(i);
+
+                //Fill in the string arrays with the values
                 rName[i] = d.getName();
                 rPhone[i] = d.getNumber();
                 rRating[i] = d.getRating();
                 rAddress[i] = d.getAddress();
                 rDistance[i] = d.getDistance();
-                Name.setText(rName[i]);
+
+                //Not sure why this is in the loop?
+
 
             }
         }else{
-             Name.setText("error");
-            }*/
+            Name.setText("error");
         }
+
+
+
     }
+}
