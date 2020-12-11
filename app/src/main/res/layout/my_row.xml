@@ -49,6 +49,30 @@
                 android:text="phone"
                 app:layout_constraintStart_toStartOf="@+id/displayname"
                 app:layout_constraintTop_toBottomOf="@+id/displayname" />
+            <TextView
+                android:id="@+id/displayaddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="phone"
+                app:layout_constraintStart_toStartOf="@+id/displayphone"
+                app:layout_constraintTop_toBottomOf="@+id/displayphone" />
+            <TextView
+                android:id="@+id/displayrating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="phone"
+                app:layout_constraintStart_toStartOf="@+id/displayaddress"
+                app:layout_constraintTop_toBottomOf="@+id/displayaddress" />
+            <TextView
+                android:id="@+id/displaydistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="phone"
+                app:layout_constraintStart_toStartOf="@+id/displayrating"
+                app:layout_constraintTop_toBottomOf="@+id/displayrating" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

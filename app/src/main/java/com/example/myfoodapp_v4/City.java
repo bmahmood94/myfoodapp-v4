@@ -168,7 +168,7 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
                         info.setName(object.getString("name"));
                         info.setPhone(object.getString("phone"));
                         info.setDistance(object.getString("distance"));
-                        info.setAddress(object.getString("location"));
+                        info.setAddress(object2.getString("display_address"));
 
                         //Then add it to the array List
                         data.add(info);

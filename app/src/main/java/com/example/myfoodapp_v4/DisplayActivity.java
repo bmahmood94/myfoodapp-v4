@@ -37,7 +37,7 @@ public class DisplayActivity extends AppCompatActivity {
         }
 
         if(data.size() >= 10) {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 10; i++) {
                 //Set d to the current data index in the array list
                 d = data.get(i);
 
@@ -57,7 +57,7 @@ public class DisplayActivity extends AppCompatActivity {
 
             // Name.setText("error");
         }
-        MyAdapter adapter = new MyAdapter(this, rName, rPhone);
+        MyAdapter adapter = new MyAdapter(this, rName, rPhone, rAddress, rDistance, rRating);
         recycle.setAdapter(adapter);
         recycle.setLayoutManager(new LinearLayoutManager(this));
 

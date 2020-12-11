@@ -11,13 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
 {
-    String Aname[], Aphone[];
+    String Aname[], Aphone[], Aaddress[], Arating[], Adistance[];
     Context context;
 
-    public MyAdapter(Context ct, String name[], String phone[]){
+    public MyAdapter(Context ct, String name[], String phone[], String address[], String distance[], String rating[]){
         context=ct;
         Aname= name;
         Aphone=phone;
+        Aaddress = address;
+        Arating = rating;
+        Adistance = distance;
     }
     @NonNull
     @Override
@@ -32,6 +35,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
     holder.mName.setText(Aname[position]);
     holder.mPhone.setText(Aphone[position]);
+    holder.mAddress.setText(Aaddress[position]);
+    holder.mRating.setText(Arating[position]);
+    holder.mDistance.setText(Adistance[position]);
     }
 
     @Override
@@ -40,12 +46,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView mName, mPhone;
+        TextView mName, mPhone, mAddress, mRating, mDistance;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mName = itemView.findViewById(R.id.displayname);
             mPhone = itemView.findViewById(R.id.displayphone);
+            mAddress = itemView.findViewById(R.id.displayaddress);
+            mRating = itemView.findViewById(R.id.displayrating);
+            mDistance = itemView.findViewById(R.id.displaydistance);
         }
     }
 }
