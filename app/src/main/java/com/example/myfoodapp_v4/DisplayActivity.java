@@ -18,6 +18,8 @@ public class DisplayActivity extends AppCompatActivity {
     public String[] rRating= new String[10];
     public String[] rAddress= new String[10];
     public String[] rDistance= new String[10];
+    public Double y, x=1609.344, z;
+
     RecyclerView recycle;
 
 
@@ -31,10 +33,7 @@ public class DisplayActivity extends AppCompatActivity {
         data = City.getInfo();
         RestaurantInfo d;
 
-        for(RestaurantInfo i : data){
-            System.out.println(i);
 
-        }
 
         if(data.size() >= 10) {
             for (int i = 0; i < 10; i++) {
@@ -47,6 +46,17 @@ public class DisplayActivity extends AppCompatActivity {
                 rRating[i] = d.getRating();
                 rAddress[i] = d.getAddress();
                 rDistance[i] = d.getDistance();
+                rAddress[i] = rAddress[i].replaceAll("\\[", "").replaceAll("\\]","");
+                rAddress[i] = rAddress[i].replace("\"", "");
+                rPhone[i] = rPhone[i].replace("+", "");
+
+                y = Double.parseDouble(rDistance[i]);
+                z=y/x;
+                String s=Double.toString(z);
+                s = s.substring(0, Math.min(s.length(), 4));
+                rDistance[i]=s;
+
+
 
                 //Not sure why this is in the loop?
 

@@ -150,6 +150,7 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
                     for(int i =0; i<businesses.length(); i++){
                         JSONObject object = businesses.getJSONObject(i);
                         JSONObject object2 = businesses.getJSONObject(i).getJSONObject("location");
+                        JSONObject object3 = businesses.getJSONObject(i).getJSONObject("coordinates");
                         String name = object.getString("name");
                         System.out.println(name);
                         String phone = object.getString("display_phone");
@@ -158,8 +159,12 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
                         System.out.println(rating);
                         String distance = object.getString("distance");
                         System.out.println(distance);
-                        String location = object2.getString("address1");
+                        String location = object2.getString("display_address");
                         System.out.println(location);
+                        String lat = object3.getString("latitude");
+                        System.out.println(lat);
+                        String lon = object3.getString("longitude");
+                        System.out.println(lon);
                         //String open_closed = object.getString("is_closed");
 
                         //Once we have the data, we will make a new RestaurantInfo
@@ -253,6 +258,7 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
                         for(int i =0; i<businesses.length(); i++) {
                             JSONObject object = businesses.getJSONObject(i);
                             JSONObject object2 = businesses.getJSONObject(i).getJSONObject("location");
+                            JSONObject object3 = businesses.getJSONObject(i).getJSONObject("coordinates");
                             String name = object.getString("name");
                             System.out.println(name);
                             String phone = object.getString("display_phone");
@@ -261,8 +267,12 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
                             System.out.println(rating);
                             String distance = object.getString("distance");
                             System.out.println(distance);
-                            String location = object2.getString("address1");
+                            String location = object2.getString("display_address");
                             System.out.println(location);
+                            String lat = object3.getString("latitude");
+                            System.out.println(lat);
+                            String lon = object3.getString("longitude");
+                            System.out.println(lon);
                             //String open_closed = object.getString("is_closed");
 
                             //Once we have the data, we will make a new RestaurantInfo
@@ -271,7 +281,10 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
                             info.setName(object.getString("name"));
                             info.setPhone(object.getString("phone"));
                             info.setDistance(object.getString("distance"));
-                            info.setAddress(object.getString("location"));
+                            info.setAddress(object2.getString("display_address"));
+                            info.setLat(object3.getString("latitude"));
+                            info.setLon(object3.getString("longitude"));
+
 
                             //Then add it to the array List
                             data.add(info);

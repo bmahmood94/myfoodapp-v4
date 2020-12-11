@@ -36,8 +36,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
     holder.mName.setText(Aname[position]);
     holder.mPhone.setText(Aphone[position]);
     holder.mAddress.setText(Aaddress[position]);
-    holder.mRating.setText(Arating[position]);
-    holder.mDistance.setText(Adistance[position]);
+    holder.mRating.setText(Arating[position]+" rating");
+    holder.mDistance.setText(Adistance[position] + " miles");
     }
 
     @Override
