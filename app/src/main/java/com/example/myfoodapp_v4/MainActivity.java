@@ -52,10 +52,16 @@ public class MainActivity extends AppCompatActivity {
                         Intent open_favorites = new Intent(MainActivity.this, Favorites.class);
                         startActivity(open_favorites);
                         Toast.makeText(MainActivity.this, "Loading Favorites",Toast.LENGTH_SHORT).show();break;
+                    case R.id.map:
+                        Intent open_map =new Intent(MainActivity.this, MapsActivity.class);
+                        startActivity(open_map);
+                        Toast.makeText(MainActivity.this, "Loading Map based of user location",Toast.LENGTH_SHORT).show();break;
+
                     case R.id.logout:
                         FirebaseAuth.getInstance().signOut();
                         startActivity(new Intent(getApplicationContext(), Login.class));
                         finish();
+
                     default:
                         return true;
                 }

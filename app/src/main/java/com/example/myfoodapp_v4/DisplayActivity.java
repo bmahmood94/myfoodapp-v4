@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +16,7 @@ import java.util.ArrayList;
 public class DisplayActivity extends AppCompatActivity {
     public ArrayList<RestaurantInfo> data;
    // public TextView Name;
+    public Button map_butn;
     public String[] rName= new String[10];
     public String[] rPhone= new String[10];
     public String[] rRating= new String[10];
@@ -29,6 +33,7 @@ public class DisplayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display);
        // Name= findViewById(R.id.food_name);
         recycle = findViewById(R.id.recycleview);
+        map_butn=findViewById(R.id.display_map);
 
         data = City.getInfo();
         RestaurantInfo d;
@@ -71,6 +76,12 @@ public class DisplayActivity extends AppCompatActivity {
         recycle.setAdapter(adapter);
         recycle.setLayoutManager(new LinearLayoutManager(this));
 
-
+        map_butn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent open_map = new Intent(DisplayActivity.this, MapsActivity.class);
+                startActivity(open_map);
+            }
+        });
     }
 }

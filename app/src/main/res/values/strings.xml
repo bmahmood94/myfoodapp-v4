@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MyfoodApp-v4</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="Mainpage">WELCOME BACK! We hope you enjoy your app. Please begin by clicking the menu to navigate to the page you need</string>
+    <string name="developer">Belal Mahmood Z23123449</string>
+    <string name="show_map">Show on Map</string>
+    <string name="Add_favorites">Add to Favorites</string>
+
 </resources>
