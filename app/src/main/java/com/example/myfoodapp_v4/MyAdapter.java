@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
 {
+
     String Aname[], Aphone[], Aaddress[], Arating[], Adistance[];
     Context context;
 
