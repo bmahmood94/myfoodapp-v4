@@ -12,7 +12,9 @@ public class RestaurantInfo {
         private String lon;
 
         public RestaurantInfo() {};
-
+//these are the Setter and Getter functions that return Name, Phone, Address, Distance, Rating, Latitud, and Longitude
+//this is where City will send the informationa and Display Activity will get information from
+//Each of the names describe what it will return
         public void setName(String name) {
             this.name = name;
         }
@@ -32,13 +34,6 @@ public class RestaurantInfo {
             this.rating = t;
         }
 
-        public void setOpen_or_closed(String t) {
-            if (t=="false") {
-                this.open_or_closed = "open";
-            }else{
-                this.open_or_closed = "closed";
-            }
-        }
 
         public void setLat(String l) {
             this.lat = l;
@@ -65,10 +60,6 @@ public class RestaurantInfo {
 
         public String getRating() {
             return this.rating;
-        }
-
-        public String getOpen_or_closed() {
-            return this.open_or_closed;
         }
 
         public String getLat() {

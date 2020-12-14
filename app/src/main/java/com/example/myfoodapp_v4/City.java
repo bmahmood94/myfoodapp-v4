@@ -64,12 +64,9 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city);
         //local variables being connected to layout page
-        context=this;
+        context = this;
         favorites = findViewById(R.id.favorites_citybtn);
-
-
         search = findViewById(R.id.city_search_btn);
-
         gps = findViewById(R.id.gps_search_btn);
         home = findViewById(R.id.city_homebtn);
         logout = findViewById(R.id.city_logoutbtn);
@@ -125,8 +122,8 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
         });
 
     }
-    public static ArrayList<RestaurantInfo> getInfo()
-    {
+
+    public static ArrayList<RestaurantInfo> getInfo() {
         return data;
     }
 
@@ -147,25 +144,11 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
                     JSONArray businesses = main.getJSONArray("businesses");
 
                     //Loop through the businesses in the JSON Array
-                    for(int i =0; i<businesses.length(); i++){
+                    for (int i = 0; i < businesses.length(); i++) {
                         JSONObject object = businesses.getJSONObject(i);
                         JSONObject object2 = businesses.getJSONObject(i).getJSONObject("location");
                         JSONObject object3 = businesses.getJSONObject(i).getJSONObject("coordinates");
-                        String name = object.getString("name");
-                        System.out.println(name);
-                        String phone = object.getString("display_phone");
-                        System.out.println(phone);
-                        String rating = object.getString("rating");
-                        System.out.println(rating);
-                        String distance = object.getString("distance");
-                        System.out.println(distance);
-                        String location = object2.getString("display_address");
-                        System.out.println(location);
-                        String lat = object3.getString("latitude");
-                        System.out.println(lat);
-                        String lon = object3.getString("longitude");
-                        System.out.println(lon);
-                        //String open_closed = object.getString("is_closed");
+
 
                         //Once we have the data, we will make a new RestaurantInfo
                         info = new RestaurantInfo();
@@ -174,6 +157,9 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
                         info.setPhone(object.getString("phone"));
                         info.setDistance(object.getString("distance"));
                         info.setAddress(object2.getString("display_address"));
+                        info.setLat(object3.getString("latitude"));
+                        info.setLon(object3.getString("longitude"));
+
 
                         //Then add it to the array List
                         data.add(info);
@@ -211,37 +197,38 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
         System.out.println("onRequestPermissionsResult Callback Entered");
         //Check that permission was granted
         if (grantResults.length > 0 &&
-                grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             getLocation();
         }
 
 
     }
+
     @SuppressLint("MissingPermission")
-    private void getLocation(){
+    private void getLocation() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         fusedLocationClient.getLastLocation().addOnSuccessListener(this, this);
 
 
     }
+
     //onSuccess for Location Services
     public void onSuccess(Location location) {
-        //Get Weather by Location
+        //Get Restaurants by Location
         String lat = String.valueOf(location.getLatitude());
         String lon = String.valueOf(location.getLongitude());
         System.out.println("Latitude = " + lat);
         System.out.println("Longitude = " + lon);
-        Log.d(TAG1, lat + lon);
 
-
-        getFoodByLocation(lat,lon);
+        getFoodByLocation(lat, lon);
 
     }
-    public void getFoodByLocation(String lat, String lon){
+
+    public void getFoodByLocation(String lat, String lon) {
         String latitude = lat;
         String longitude = lon;
         String url = "https://api.yelp.com/v3/businesses/search?latitude=";
-        String url2="&longitude=";
+        String url2 = "&longitude=";
         StringRequest request = new StringRequest(Request.Method.GET, url + latitude + url2 + longitude, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -250,30 +237,15 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
 
                 try {
                     JSONObject main = new JSONObject(response);
-                    JSONArray businesses= main.getJSONArray("businesses");
+                    JSONArray businesses = main.getJSONArray("businesses");
 
-                    if(businesses.length()==0){
+                    if (businesses.length() == 0) {
                         System.out.println("error");
-                    }else{
-                        for(int i =0; i<businesses.length(); i++) {
+                    } else {
+                        for (int i = 0; i < businesses.length(); i++) {
                             JSONObject object = businesses.getJSONObject(i);
                             JSONObject object2 = businesses.getJSONObject(i).getJSONObject("location");
                             JSONObject object3 = businesses.getJSONObject(i).getJSONObject("coordinates");
-                            String name = object.getString("name");
-                            System.out.println(name);
-                            String phone = object.getString("display_phone");
-                            System.out.println(phone);
-                            String rating = object.getString("rating");
-                            System.out.println(rating);
-                            String distance = object.getString("distance");
-                            System.out.println(distance);
-                            String location = object2.getString("display_address");
-                            System.out.println(location);
-                            String lat = object3.getString("latitude");
-                            System.out.println(lat);
-                            String lon = object3.getString("longitude");
-                            System.out.println(lon);
-                            //String open_closed = object.getString("is_closed");
 
                             //Once we have the data, we will make a new RestaurantInfo
                             info = new RestaurantInfo();
@@ -290,16 +262,12 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
                             data.add(info);
 
 
-
                         }
-                        System.out.println(context);
-                        System.out.println(this);
-                        System.out.println(data);
+
 
                         Intent intent = new Intent(context, DisplayActivity.class);
                         startActivity(intent);
                     }
-
 
 
                 } catch (JSONException e) {
@@ -315,9 +283,9 @@ public class City extends AppCompatActivity implements OnSuccessListener<Locatio
         }) {
             //This is for Headers If You Needed
             @Override
-            public Map<String,String> getHeaders() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("Authorization","bearer " + ACCESS_TOKEN);
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Authorization", "bearer " + ACCESS_TOKEN);
                 return params;
             }
         };

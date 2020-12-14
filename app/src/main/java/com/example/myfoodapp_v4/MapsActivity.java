@@ -15,11 +15,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+    //this is a object of Restaurant thats an array
     public ArrayList<RestaurantInfo> data;
+    //this two arrays are for the latitude, longitude, and Name of the RestaurantInfo
     ArrayList<LatLng> arrayList= new ArrayList<LatLng>();
     ArrayList<String> arrayname = new ArrayList<String>();
 
-    LatLng sydney = new LatLng(-34, 151);
+
     private GoogleMap mMap;
 
     @Override
@@ -30,21 +32,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        //this is to connect to the information thats given in city
         data = City.getInfo();
-        RestaurantInfo d;
-
+        RestaurantInfo d;//object of Restaurant info
+//this portion is the transfer of Latitude, Longitude, and name from Restaurant Infor
         if(data.size() >= 5) {
             for (int i = 0; i < 10; i++) {
                 //Set d to the current data index in the array list
                 d = data.get(i);
+                //adding the name to array list
                 arrayname.add(d.getName());
+                //receiving the latitude and longitude from Restaurant info
                 String latl = d.getLat();
                 String lonl = d.getLon();
+                //converting latl and lonl to doubles
                 double latitude = Double.parseDouble(latl);
                 double longitude = Double.parseDouble(lonl);
+                //new instance of LatLng to conver latitude and longitude to LatLng format
                 LatLng location = new LatLng(latitude, longitude);
+                //adding lat and lon to arraylist
                 arrayList.add(location);
-                System.out.println(arrayList);
+
             }
         }else{
             Toast.makeText(MapsActivity.this, "error",Toast.LENGTH_SHORT).show();
@@ -65,15 +73,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        //this is to generate the multiple points and to display there names
         for(int i=0;i<arrayList.size();i++){
             mMap.addMarker(new MarkerOptions().position(arrayList.get(i)).title(arrayname.get(i)));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(15.0f));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(arrayList.get(i)));
         }
 
-        // Add a marker in Sydney and move the camera
-       /* LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
+
     }
 }
